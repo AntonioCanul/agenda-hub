@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear cuenta | Agenda-hub</title>
+  <link rel="stylesheet" href="cuentas.css">
+</head>
+<body>
+  <main class="account-page">
+    <a class="back-home" href="index.html">← Volver al inicio</a>
+    <section class="account-card">
+      <a class="brand" href="index.html"><span class="brand-icon">▣</span><span>Agenda-hub</span></a>
+      <div class="heading">
+        <span class="eyebrow">ÚNETE A NUESTRA COMUNIDAD</span>
+        <h1>Crea tu cuenta</h1>
+        <p>Regístrate para encontrar tutores y organizar tus sesiones de aprendizaje.</p>
+      </div>
+
+      <form id="registerForm" class="account-form">
+        <div class="form-grid">
+          <label>Nombre
+            <input name="nombre" type="text" placeholder="Tu nombre" autocomplete="given-name" required>
+          </label>
+          <label>Apellido
+            <input name="apellido" type="text" placeholder="Tu apellido" autocomplete="family-name" required>
+          </label>
+        </div>
+        <label>Correo electrónico
+          <input name="email" type="email" placeholder="nombre@correo.com" autocomplete="email" required>
+        </label>
+        <label>Contraseña
+          <input name="password" type="password" placeholder="Mínimo 8 caracteres" minlength="8" autocomplete="new-password" required>
+        </label>
+        <label>Confirmar contraseña
+          <input name="confirmPassword" type="password" placeholder="Repite tu contraseña" minlength="8" autocomplete="new-password" required>
+        </label>
+        <label class="check-row"><input type="checkbox" required> <span>Acepto los términos y condiciones y el aviso de privacidad.</span></label>
+        <button class="primary-button" type="submit">Crear cuenta</button>
+        <p class="form-message" id="registerMessage" role="status" aria-live="polite"></p>
+      </form>
+      <p class="switch-link">¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
+      <p class="switch-link tutor-link">¿Quieres enseñar? <a href="ser-tutor.html">Conoce cómo ser tutor</a></p>
+    </section>
+    <aside class="account-aside">
+      <span class="aside-star">✧</span>
+      <span class="eyebrow">TU CAMINO DE APRENDIZAJE</span>
+      <h2>Aprender es mejor cuando tienes el apoyo correcto.</h2>
+      <p>Explora materias, encuentra especialistas y organiza tu aprendizaje desde un solo lugar.</p>
+    </aside>
+  </main>
+  <script src="registro.js"></script>
+</body>
+</html>

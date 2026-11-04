@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Encuentra tutores y reserva sesiones de aprendizaje.">
+  <title>Agenda-hub | Encuentra tu tutor ideal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Agenda-hub, inicio">
+        <span class="brand-icon">▣</span><span>Agenda-hub</span>
+      </a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="active" href="#explorar">Explorar tutores</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="ser-tutor.html">Ser tutor</a>
+      </nav>
+      <div class="header-actions">
+        <a class="profile-link" href="login.html">Mi perfil</a>
+        <a class="create-account" href="registro.html">Crear cuenta</a>
+      </div>
+    </header>
+
+    <main id="inicio" class="hero">
+      <div class="decor-circle"></div>
+      <section class="hero-copy" id="explorar">
+        <div class="eyebrow"><span>✧</span> APRENDE A TU RITMO, AVANZA CON CONFIANZA</div>
+        <h1>Encuentra al tutor ideal para <span>seguir creciendo.</span></h1>
+        <p class="intro">Conecta con tutores expertos, compara horarios y reserva una sesión en minutos.</p>
+
+        <form class="search-panel" id="searchForm">
+          <label class="search-field">
+            <span>¿QUÉ QUIERES APRENDER?</span>
+            <div class="field-control">
+              <span class="search-symbol">⌕</span>
+              <input id="subject" type="search" placeholder="Materia, tema o tutor" aria-label="Materia, tema o tutor">
+            </div>
+          </label>
+          <label class="date-field">
+            <span>DISPONIBILIDAD</span>
+            <div class="field-control">
+              <span class="calendar-symbol">▦</span>
+              <input id="date" type="date" aria-label="Fecha de disponibilidad">
+            </div>
+          </label>
+          <button class="search-button" type="submit"><span>⌕</span> Buscar</button>
+        </form>
+        <p class="search-message" id="searchMessage" role="status" aria-live="polite"></p>
+
+        <div class="social-proof">
+          <div class="avatars" aria-hidden="true"><span>👩🏻</span><span>👨🏽</span><span>👩🏾</span></div>
+          <div><strong>Más de 2.000 estudiantes</strong><small><span>★</span> 4.9 de valoración promedio</small></div>
+        </div>
+      </section>
+
+      <section class="hero-visual" aria-label="Tutores disponibles">
+        <div class="image-outline"></div>
+        <img class="tutors-image" src="assets/tutores.jpg" alt="Dos tutores en un aula frente a una pizarra">
+        <div class="floating-card availability">
+          <span class="status-dot"></span>
+          <div><strong>Disponible ahora</strong><small>32 tutores en línea</small></div>
+        </div>
+        <div class="floating-card sessions">
+          <span class="video-icon">▣</span>
+          <div><strong>Sesiones 1 a 1</strong><small>Atención 100% personalizada</small></div>
+        </div>
+      </section>
+    </main>
+
+    <section class="below-fold" id="como-funciona">
+      <p>APRENDER PUEDE SER MÁS SENCILLO</p>
+      <h2>Tu próximo paso empieza aquí.</h2>
+      <span id="ser-tutor">Encuentra acompañamiento para alcanzar tus objetivos.</span>
+    </section>
+    <footer><span>© 2026 Agenda-hub</span><a href="#inicio">Volver arriba ↑</a></footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

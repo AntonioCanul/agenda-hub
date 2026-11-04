@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ser tutor | Agenda-hub</title>
+  <link rel="stylesheet" href="cuentas.css">
+</head>
+<body>
+  <header class="simple-header">
+    <a class="brand" href="index.html"><span class="brand-icon">▣</span><span>Agenda-hub</span></a>
+    <a class="back-link" href="index.html">Volver al inicio</a>
+  </header>
+
+  <main class="tutor-page">
+    <section class="tutor-hero">
+      <span class="eyebrow">COMPARTE LO QUE SABES</span>
+      <h1>Conviértete en tutor y ayuda a otros a <span>crecer.</span></h1>
+      <p>Comparte tus conocimientos, presenta tus materias y conecta con estudiantes que buscan aprender contigo.</p>
+      <a class="primary-button inline-button" href="#solicitud">Quiero ser tutor</a>
+    </section>
+
+    <section class="steps-section">
+      <h2>¿Cómo funciona?</h2>
+      <div class="steps-grid">
+        <article class="step-card"><span>01</span><h3>Crea tu perfil</h3><p>Cuéntanos sobre ti, tu experiencia y las materias que puedes enseñar.</p></article>
+        <article class="step-card"><span>02</span><h3>Completa tu solicitud</h3><p>Comparte tus datos académicos y una breve descripción de tu forma de enseñar.</p></article>
+        <article class="step-card"><span>03</span><h3>Conecta con estudiantes</h3><p>Cuando tu perfil sea revisado, podrás comenzar a recibir solicitudes de sesiones.</p></article>
+      </div>
+    </section>
+
+    <section class="application-section" id="solicitud">
+      <div class="application-intro">
+        <span class="eyebrow">EMPIEZA AQUÍ</span>
+        <h2>Solicitud para ser tutor</h2>
+        <p>Completa este formulario para crear tu perfil de tutor.</p>
+      </div>
+      <form id="tutorForm" class="account-form application-form">
+        <div class="form-grid">
+          <label>Nombre completo
+            <input name="nombre" type="text" placeholder="Tu nombre completo" required>
+          </label>
+          <label>Correo electrónico
+            <input name="email" type="email" placeholder="nombre@correo.com" required>
+          </label>
+        </div>
+        <div class="form-grid">
+          <label>Materia principal
+            <input name="materia" type="text" placeholder="Ej. Matemáticas" required>
+          </label>
+          <label>Experiencia enseñando
+            <select name="experiencia" required>
+              <option value="">Selecciona una opción</option>
+              <option>Sin experiencia formal</option>
+              <option>Menos de 1 año</option>
+              <option>1 a 3 años</option>
+              <option>Más de 3 años</option>
+            </select>
+          </label>
+        </div>
+        <label>Formación académica
+          <input name="formacion" type="text" placeholder="Ej. Estudiante de Ingeniería, Licenciatura..." required>
+        </label>
+        <label>Cuéntanos sobre ti y cómo enseñas
+          <textarea name="descripcion" rows="5" placeholder="Describe tu experiencia, tus habilidades y tu forma de enseñar..." required></textarea>
+        </label>
+        <label class="check-row"><input type="checkbox" required> <span>Confirmo que la información proporcionada es correcta y acepto que sea revisada.</span></label>
+        <button class="primary-button" type="submit">Enviar solicitud</button>
+        <p class="form-message" id="tutorMessage" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <footer class="account-footer"><a href="index.html">Agenda-hub</a><span>Comparte conocimiento. Impulsa nuevas oportunidades.</span></footer>
+  <script src="ser-tutor.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+:root { font-family: Inter, Arial, sans-serif; color: #14243e; background: #f2f8fd; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; }
+a { color: inherit; text-decoration: none; }
+.back-home { position: absolute; top: 28px; left: max(7vw, 24px); color: #617992; font-size: 13px; font-weight: 600; }
+.account-page { min-height: 100vh; padding: 80px max(7vw, 24px); display: grid; grid-template-columns: minmax(390px, 510px) minmax(300px, 1fr); align-items: center; justify-content: center; gap: clamp(45px, 8vw, 125px); position: relative; overflow: hidden; }
+.account-page::before { content: ""; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: #deedf9; left: -240px; bottom: -230px; }
+.account-card { width: 100%; padding: 37px 40px; border-radius: 23px; background: white; box-shadow: 0 22px 65px #1e4b7017; position: relative; z-index: 1; }
+.brand { display: inline-flex; align-items: center; gap: 11px; font-size: 23px; font-weight: 800; }
+.brand-icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; background: #2b70b2; color: white; font-size: 25px; transform: rotate(-5deg); }
+.heading { margin: 28px 0 22px; }
+.eyebrow { color: #2b70b2; font-size: 10px; font-weight: 800; letter-spacing: 1px; }
+h1 { margin: 9px 0; font-size: 35px; letter-spacing: -1.5px; }
+.heading p, .account-aside p { color: #71849c; font-size: 13px; line-height: 1.7; margin: 0; }
+.account-form { display: flex; flex-direction: column; gap: 15px; }
+.account-form label { display: flex; flex-direction: column; gap: 8px; color: #283b55; font-size: 12px; font-weight: 700; }
+.account-form input:not([type=checkbox]), .account-form select, .account-form textarea {
+  width: 100%; min-height: 46px; border: 1px solid #dce5ee; border-radius: 10px; padding: 12px 13px;
+  outline: none; background: #fbfdff; color: #14243e; font: 13px Inter, sans-serif;
+}
+.account-form textarea { resize: vertical; line-height: 1.6; }
+.account-form input:focus, .account-form select:focus, .account-form textarea:focus { border-color: #4a91cb; box-shadow: 0 0 0 3px #4a91cb1c; }
+.account-form input::placeholder, .account-form textarea::placeholder { color: #9aa8b7; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.check-row { flex-direction: row !important; align-items: flex-start; gap: 9px !important; color: #71849c !important; font-size: 11px !important; line-height: 1.6; font-weight: 500 !important; }
+.check-row input { margin: 2px 0 0; accent-color: #2b70b2; flex: 0 0 auto; }
+.primary-button { min-height: 48px; display: grid; place-items: center; width: 100%; padding: 12px 20px; border: 0; border-radius: 11px; background: #2b70b2; color: white; font: 700 14px Inter, sans-serif; cursor: pointer; box-shadow: 0 8px 17px #2b70b226; transition: background .2s, transform .2s; }
+.primary-button:hover { background: #1e5f9c; transform: translateY(-1px); }
+.form-message { min-height: 16px; margin: 0; color: #286eae; font-size: 11px; line-height: 1.5; }
+.switch-link { text-align: center; color: #71849c; font-size: 11px; margin: 20px 0 0; }
+.switch-link a { color: #2b70b2; font-weight: 700; }
+.tutor-link { margin-top: 10px; }
+.account-aside { max-width: 480px; position: relative; z-index: 1; }
+.aside-star { display: block; color: #7db4e1; font-size: 65px; margin-bottom: 25px; }
+.account-aside h2 { font-size: clamp(35px, 4vw, 54px); line-height: 1.12; letter-spacing: -2px; margin: 18px 0; }
+.simple-header { height: 78px; padding: 0 max(7vw, 24px); display: flex; justify-content: space-between; align-items: center; background: white; }
+.back-link { color: #52708e; font-size: 13px; font-weight: 600; }
+.tutor-page { max-width: 1120px; margin: auto; padding: 65px 25px 80px; }
+.tutor-hero { max-width: 800px; margin: 0 auto 65px; text-align: center; }
+.tutor-hero h1 { font-size: clamp(42px, 6vw, 68px); line-height: 1.08; letter-spacing: -3px; margin: 17px 0; }
+.tutor-hero h1 span { color: #2b70b2; }
+.tutor-hero p { max-width: 650px; margin: 0 auto 25px; color: #71849c; font-size: 16px; line-height: 1.8; }
+.inline-button { width: auto; display: inline-grid; padding-inline: 28px; }
+.steps-section { margin-bottom: 70px; }
+.steps-section > h2, .application-intro h2 { font-size: 32px; letter-spacing: -1px; margin: 0 0 23px; text-align: center; }
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.step-card { padding: 25px; background: white; border: 1px solid #e5edf4; border-radius: 17px; }
+.step-card > span { color: #2b70b2; font-size: 12px; font-weight: 800; }
+.step-card h3 { font-size: 17px; margin: 15px 0 9px; }
+.step-card p { color: #71849c; font-size: 12px; line-height: 1.7; margin: 0; }
+.application-section { max-width: 780px; margin: auto; padding: 38px; border-radius: 22px; background: white; box-shadow: 0 18px 50px #1e4b7012; }
+.application-intro { text-align: center; margin-bottom: 25px; }
+.application-intro h2 { margin: 9px 0; }
+.application-intro p { color: #71849c; font-size: 13px; margin: 0; }
+.application-form { gap: 17px; }
+.account-footer { display: flex; justify-content: space-between; padding: 22px max(7vw, 24px); background: white; color: #71849c; font-size: 11px; }
+.account-footer a { color: #2b70b2; font-weight: 800; }
+@media (max-width: 850px) {
+  .account-page { grid-template-columns: 1fr; justify-items: center; padding: 80px 20px 35px; }
+  .account-card { max-width: 510px; }
+  .account-aside { display: none; }
+  .tutor-page { padding-top: 45px; }
+}
+@media (max-width: 600px) {
+  .account-card { padding: 29px 22px; }
+  .form-grid, .steps-grid { grid-template-columns: 1fr; }
+  .tutor-hero h1 { letter-spacing: -2px; }
+  .application-section { padding: 25px 18px; }
+  .account-footer { gap: 12px; flex-direction: column; }
+}
