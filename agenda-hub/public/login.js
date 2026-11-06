@@ -10,11 +10,27 @@ togglePassword.addEventListener("click", () => {
   togglePassword.setAttribute("aria-label", showing ? "Mostrar contraseña" : "Ocultar contraseña");
 });
 
-loginForm.addEventListener("submit", (event) => {
+loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const email = document.getElementById("email").value.trim();
-
   if (!loginForm.reportValidity()) return;
 
-  formMessage.textContent = `Formulario listo para iniciar sesión con ${email}. Conecta este formulario a tu sistema de autenticación para validar la cuenta.`;
+  const boton = loginForm.querySelector("button[type=submit]");
+  boton.disabled = true;
+  formMessage.textContent = "Verificando...";
+
+  const { ok, data } = await api("/api/auth/login", {
+    method: "POST",
+    body: {
+      email: document.getElementById("email").value.trim(),
+      password: passwordInput.value,
+      recordar: loginForm.elements.remember.checked
+    }
+  });
+
+  if (ok) {
+    window.location.href = "index.html";
+    return;
+  }
+  formMessage.textContent = data.error || "No se pudo iniciar sesión.";
+  boton.disabled = false;
 });

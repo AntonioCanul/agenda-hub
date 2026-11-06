@@ -1,23 +1,74 @@
-# Agenda-hub — HTML, CSS y JavaScript
+# Agenda-hub
 
-Sitio estático hecho con HTML, CSS y JavaScript puro. No utiliza React ni requiere dependencias.
+Plataforma de asesorías y tutorías. Front-end en HTML/CSS/JavaScript puro, backend en **Node.js + Express** y base de datos **MySQL**.
 
-## Cómo abrirlo
-Extrae el ZIP y abre `index.html` en el navegador. También puedes abrir la carpeta con Visual Studio Code y usar Live Server.
+## Estructura
 
-## Páginas
-- `index.html`: página principal y buscador de tutores.
-- `login.html`: inicio de sesión.
-- `registro.html`: creación de cuenta de estudiante.
-- `ser-tutor.html`: información para convertirse en tutor y formulario de solicitud.
+```
+agenda-hub/
+├── public/            Front-end (lo único que ve el navegador)
+├── server/            Backend (API)
+│   ├── server.js
+│   ├── db.js
+│   ├── middleware/
+│   └── routes/        auth.js, tutores.js
+├── database/
+│   ├── agenda_hub.sql     Estructura + datos semilla
+│   └── datos_prueba.sql   Tutores y estudiante de ejemplo (solo desarrollo)
+├── .env.example       Plantilla de configuración
+└── BD.md              Diagrama ER (Mermaid)
+```
 
-## Estilos y scripts
-- `styles.css`, `script.js`: página principal.
-- `login.css`, `login.js`: inicio de sesión.
-- `cuentas.css`: estilos compartidos de registro y página de tutor.
-- `registro.js`: validación básica de registro y coincidencia de contraseñas.
-- `ser-tutor.js`: validación básica de solicitud de tutor.
-- `assets/tutores.jpg`: imagen principal.
+## Puesta en marcha
 
-## Importante
-Los formularios son demostraciones del lado del navegador. No guardan usuarios, contraseñas ni solicitudes. Para que el registro, inicio de sesión y solicitudes funcionen realmente, conecta los formularios a un backend o servicio de autenticación seguro.
+1. Instala **Node.js 18+** y **MySQL 8** (o MariaDB 10.5+).
+2. Crea la base de datos:
+   ```bash
+   mysql -u root -p < database/agenda_hub.sql
+   mysql -u root -p < database/datos_prueba.sql   # opcional, solo desarrollo
+   ```
+3. Crea un usuario de MySQL para la aplicación (no uses `root`):
+   ```sql
+   CREATE USER 'agenda_user'@'localhost' IDENTIFIED BY 'tu_contraseña_segura';
+   GRANT SELECT, INSERT, UPDATE, DELETE ON agenda_hub.* TO 'agenda_user'@'localhost';
+   ```
+4. Copia `.env.example` a `.env` y llena tus datos (incluye un `JWT_SECRET` largo y aleatorio).
+5. Instala y ejecuta:
+   ```bash
+   npm install
+   npm start
+   ```
+6. Abre http://localhost:3000
+
+Usuarios de prueba (si importaste `datos_prueba.sql`), contraseña `Demo12345`:
+`laura.tutor@demo.com`, `carlos.tutor@demo.com`, `ana.estudiante@demo.com`.
+
+## API
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| POST | `/api/auth/registro` | Crea cuenta de estudiante e inicia sesión |
+| POST | `/api/auth/login` | Inicia sesión |
+| POST | `/api/auth/logout` | Cierra sesión |
+| GET | `/api/auth/me` | Usuario con sesión activa |
+| POST | `/api/tutores/solicitud` | Envía solicitud para ser tutor (requiere sesión) |
+| GET | `/api/tutores?q=&fecha=` | Busca tutores aprobados por texto y/o fecha |
+
+## Aprobar una solicitud de tutor
+
+Todavía no hay panel de administración. Mientras tanto, aprueba desde SQL (cambia `ID`):
+
+```sql
+START TRANSACTION;
+UPDATE tutores_perfiles SET estado_solicitud = 'aprobado' WHERE id_usuario = ID;
+UPDATE usuarios SET rol = 'tutor' WHERE id_usuario = ID;
+COMMIT;
+```
+
+## Seguridad
+
+- Contraseñas con **bcrypt**; nunca se guardan en texto plano.
+- Sesión en cookie **httpOnly** (JavaScript no puede leerla); con `NODE_ENV=production` solo viaja por HTTPS.
+- Todas las consultas SQL son **parametrizadas**.
+- Límite de intentos en login y registro.
+- **Nunca subas `.env` a GitHub** (ya está en `.gitignore`).
