@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - Agenda-hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="perfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar-perfil">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-comment-dots"></i></div>
+            Agenda-hub
+        </div>
+        <a href="index.html" class="back-link"><i class="fas fa-chevron-left"></i> Volver al inicio</a>
+    </nav>
+
+    <main class="perfil-container">
+        <!-- Barra lateral -->
+        <aside class="sidebar">
+            <div class="user-info">
+                <div class="avatar"><i class="far fa-user"></i></div>
+                <h2>Mi perfil</h2>
+                <span class="role">Estudiante</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><a href="#"><i class="far fa-user"></i> Información personal</a></li>
+                <li><a href="#"><i class="far fa-calendar-alt"></i> Mis reservas</a></li>
+                <li><a href="#"><i class="far fa-heart"></i> Tutores guardados</a></li>
+            </ul>
+        </aside>
+
+        <!-- Contenido principal -->
+        <section class="content">
+            <div class="content-header">
+                <span class="seccion-badge">CONFIGURACIÓN</span>
+                <h1>Información personal</h1>
+                <p>Actualiza tus datos y elige cómo quieres usar Agenda-hub.</p>
+            </div>
+
+            <!-- Formulario de datos -->
+            <div class="card">
+                <h3>Datos de tu cuenta</h3>
+                <p class="subtitle">Esta información será visible únicamente para ti.</p>
+                <form id="perfil-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <div class="input-wrapper">
+                                <i class="far fa-user"></i>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Apellido</label>
+                            <div class="input-wrapper">
+                                <i class="far fa-user"></i>
+                                <input type="text" id="apellido" name="apellido" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo electrónico</label>
+                        <div class="input-wrapper">
+                            <i class="far fa-envelope"></i>
+                            <input type="email" id="correo" name="correo" readonly>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Banner para ser tutor -->
+            <div class="card promo-card">
+                <div class="promo-icon"><i class="fas fa-sparkles"></i></div>
+                <div class="promo-body">
+                    <span class="seccion-badge">COMPARTE LO QUE SABES</span>
+                    <h3>Quiero ofrecer mis tutorías</h3>
+                    <p>Activa tu perfil de tutor para publicar tus materias, definir disponibilidad y recibir reservas de estudiantes.</p>
+                    <ul class="promo-list">
+                        <li><i class="fas fa-check"></i> Tú eliges tus horarios</li>
+                        <li><i class="fas fa-check"></i> Define tu tarifa por hora</li>
+                        <li><i class="fas fa-check"></i> Gestiona todo desde tu perfil</li>
+                    </ul>
+                </div>
+                <button class="btn-activar" onclick="window.location.href='ser-tutor.html'">
+                    <i class="fas fa-circle"></i> Activar
+                </button>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" form="perfil-form" class="btn-primary">Guardar cambios</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="api.js"></script>
+    <script src="perfil.js"></script>
+</body>
+</html>

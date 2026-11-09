@@ -18,7 +18,7 @@ const limitador = rateLimit({
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const texto = (valor) => (typeof valor === "string" ? valor.trim() : "");
 
-// Un hash válido para comparar cuando el correo no existe (evita revelar si la cuenta existe por tiempo de respuesta)
+// Un hash válido para comparar cuando el correo no existe
 const HASH_FALSO = bcrypt.hashSync("contraseña-falsa-para-igualar-tiempos", 10);
 
 // POST /api/auth/registro
@@ -79,21 +79,48 @@ router.post("/logout", (req, res) => {
   res.json({ ok: true });
 });
 
-// GET /api/auth/me  -> datos del usuario con sesión activa (o null)
+// GET /api/auth/me  -> datos del usuario con sesión activa
 router.get("/me", async (req, res) => {
   const sesion = leerSesion(req);
   if (!sesion) return res.json({ usuario: null });
 
+  // Agregué 'email' a la consulta para que puedas mostrarlo en la vista de perfil
   const [filas] = await pool.execute(
-    "SELECT id_usuario, nombre, apellido, rol FROM usuarios WHERE id_usuario = ? AND estado = 'activo'",
+    "SELECT id_usuario, nombre, apellido, email, rol FROM usuarios WHERE id_usuario = ? AND estado = 'activo'",
     [sesion.id]
   );
+  
   if (!filas.length) {
     res.clearCookie(COOKIE_NAME);
     return res.json({ usuario: null });
   }
   const u = filas[0];
-  res.json({ usuario: { id: u.id_usuario, nombre: u.nombre, apellido: u.apellido, rol: u.rol } });
+  // Se retorna también el email al frontend
+  res.json({ usuario: { id: u.id_usuario, nombre: u.nombre, apellido: u.apellido, correo: u.email, rol: u.rol } });
+});
+
+// PUT /api/auth/perfil -> Actualizar perfil (Nombre y apellido)
+router.put('/perfil', async (req, res) => {
+  const sesion = leerSesion(req);
+  if (!sesion) return res.status(401).json({ error: "No autorizado" });
+
+  const nombre = texto(req.body.nombre);
+  const apellido = texto(req.body.apellido);
+
+  if (!nombre || !apellido) {
+    return res.status(400).json({ error: "El nombre y el apellido son obligatorios." });
+  }
+
+  try {
+    // Usamos pool.execute e id_usuario para respetar tu base de datos original
+    await pool.execute(
+      'UPDATE usuarios SET nombre = ?, apellido = ? WHERE id_usuario = ?', 
+      [nombre, apellido, sesion.id]
+    );
+    res.json({ message: "Perfil actualizado exitosamente" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 module.exports = router;

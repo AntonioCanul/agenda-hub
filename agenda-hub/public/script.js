@@ -88,12 +88,15 @@ searchForm.addEventListener("submit", async (event) => {
   const { ok, data } = await api("/api/auth/me");
   if (!ok || !data.usuario) return;
 
-  const perfil = document.querySelector(".profile-link");
+  // 1. Buscamos por el ID que acabamos de agregar
+  const perfil = document.getElementById("link-perfil"); 
   const cuenta = document.querySelector(".create-account");
+  
   if (perfil) {
     perfil.textContent = `Hola, ${data.usuario.nombre}`;
-    perfil.removeAttribute("href");
+    // ELIMINAMOS perfil.removeAttribute("href"); para que puedas ir a tu perfil
   }
+  
   if (cuenta) {
     cuenta.textContent = "Cerrar sesión";
     cuenta.href = "#";
