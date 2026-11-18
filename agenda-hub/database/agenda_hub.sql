@@ -165,4 +165,15 @@ INSERT IGNORE INTO `materias` (`clave`, `nombre`, `creditos`, `semestre_sugerido
 ('SCA1025', 'Taller de Bases de Datos', 4, 5),
 ('SCD1021', 'Redes de Computadoras', 5, 6),
 ('SCB1001', 'Administración de Bases de Datos', 5, 6),
-('SCD1004', 'Conmutación y Enrutamiento en Redes de Datos', 5, 7);
+('SCD1004', 'Conmutación y Enrutamiento en Redes de Datos', 5, 7) ;
+
+--mas materias agregadas a la base de datos para pruebas
+INSERT IGNORE INTO 'materias' ('clave', 'nombre', 'creditos', 'semestre_sugerido') VALUES
+('AEF1052', 'Probabilidad y Estadistica', 5, 3),
+('AEC1061', 'Sistemas Operativos', 4, 5),
+('SCA1026', 'Taller de Sistemas Operativos', 4, 6),
+('SCC1023', 'Sistemas Programables', 4, 7),
+('DAB2201', 'Desarrollo de aplicaciones Web', 5, 8),
+('DAD2203', 'Metodos Emergentes', 5, 8),
+('DAB2202', 'Desarrollo de aplicaciones moviles nativas', 5, 8),
+('DAB2204', 'Desarrollo de aplicaciones moviles hibridas', 5, 9);
